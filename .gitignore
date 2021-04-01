@@ -1,0 +1,6 @@
+**/*.o
+generator/generator
+solver/solver
+**/vgcore*
+
+solver/maze
