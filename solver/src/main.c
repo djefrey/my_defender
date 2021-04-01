@@ -12,13 +12,17 @@
 int main(int ac, char **av)
 {
     maze_t maze = {0, 0, NULL};
+    int ret = 0;
 
     if (ac != 2 || create_maze_from_file(&maze, av[1]))
         return (84);
-    for (int i = 0; i < maze.height; i++) {
-        printf("%s\n", maze.maze[i]);
-        free(maze.maze[i]);
+    ret = solve_maze(&maze);
+    if (ret) {
+        solved_maze_set_path(&maze);
+        solved_maze_print(&maze);
     }
+    for (int i = 0; i < maze.height; i++)
+        free(maze.maze[i]);
     free(maze.maze);
-    return (0);
+    return (ret ? 0 : 84);
 }
