@@ -6,7 +6,8 @@
 ##
 
 MAIN		=	src/main.c
-SRC			=	
+SRC			=	src/maze.c		\
+				src/utils.c
 
 INC_DIR		=	./include
 
@@ -22,10 +23,13 @@ all:	$(NAME)
 $(NAME): $(OBJ_MAIN) $(OBJ)
 	gcc $(CFLAGS) -o $(NAME) $(OBJ_MAIN) $(OBJ)
 
+debug:	CFLAGS += -g
+debug:	clean all
+
 clean:
 	rm -rf $(OBJ_MAIN) $(OBJ)
 
 fclean:	clean
 	rm -f $(NAME)
 
-re:	fclean
+re:	fclean all
