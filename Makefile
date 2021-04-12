@@ -20,6 +20,10 @@ fclean:
 	make -C $(GENERATOR) fclean
 	make -C $(SOLVER) fclean
 
+debug:
+	make -C $(GENERATOR) debug
+	make -C $(SOLVER) debug
+
 re:
 	make -C $(GENERATOR) re
 	make -C $(SOLVER) re

@@ -13,15 +13,15 @@ void fill_empty_line(char *line, char character, int size)
     }
 }
 
-int create_maze (maze *info)
+int create_maze(maze_t *info)
 {
     int count = 0;
 
-    if ((info->maze = malloc(sizeof(char *) * (info->height + 1))) == NULL)
+    if (!(info->maze = malloc(sizeof(char*) * (info->height + 1))))
         return (1);
     for (count = 0; count < info->height; count++) {
         info->maze[count] = malloc(sizeof(char) * (info->width + 1));
-        if (info->maze[count] == NULL)
+        if (!info->maze[count])
             return (1);
     }
     info->maze[count] = NULL;
@@ -32,28 +32,25 @@ int create_maze (maze *info)
     return (0);
 }
 
-int init_grid(maze *info)
+int init_grid(maze_t *info)
 {
     if (create_maze(info))
         return (1);
-    for (int i = 0; i <= info->height; i++) {
-        if (i % 2 == 0) {
-            for (int j = 0; j <= info->width; j++)
-                info->maze[i][j] = (j % 2 == 0) ? '*' : 'X';
+    for (int y = 0; y < info->height; y++) {
+        if (y % 2 == 0) {
+            for (int x = 0; x < info->width; x++)
+                info->maze[y][x] = (x % 2 == 0) ? '*' : 'X';
         } else
-            fill_empty_line(info->maze[i], 'X', info->width);
+            fill_empty_line(info->maze[y], 'X', info->width);
     }
     return (0);
 }
 
 int generator(int ac, char **av)
 {
-    maze *info = NULL;
+    maze_t *info = NULL;
 
-    if (error(ac, av))
-        return (84);
-    info = malloc(sizeof(maze));
-    if (info == NULL)
+    if (error(ac, av) || !(info = malloc(sizeof(maze_t))))
         return (84);
     info->width = atoi(av[1]);
     info->height = atoi (av[2]);

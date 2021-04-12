@@ -4,3 +4,4 @@ solver/solver
 **/vgcore*
 
 solver/maze
+solver/solved_maze

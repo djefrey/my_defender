@@ -11,12 +11,12 @@
 #include <ctype.h>
 #include <string.h>
 
-typedef struct maze_info {
+typedef struct maze_s {
     int height;
     int width;
     int pos_x;
     int pos_y;
     char **maze;
-} maze;
+} maze_t;
 
 #endif /* !MATCHSTICK_H_ */
