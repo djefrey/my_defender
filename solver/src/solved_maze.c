@@ -47,6 +47,7 @@ void solved_maze_print(maze_t *maze)
             else
                 printf("*");
         }
-        printf("\n");
+        if (y < maze->height - 1)
+            printf("\n");
     }
 }
