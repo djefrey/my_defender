@@ -1,12 +1,13 @@
 /*
 ** EPITECH PROJECT, 2021
-** matchstick
+** generator
 ** File description:
 ** header file
 */
 
-#ifndef MATCHSTICK_H_
-#define MATCHSTICK_H_
+#ifndef GENERATOR_H_
+#define GENERATOR_H_
+
 #include "my.h"
 #include <ctype.h>
 #include <string.h>
@@ -19,4 +20,6 @@ typedef struct maze_s {
     char **maze;
 } maze_t;
 
-#endif /* !MATCHSTICK_H_ */
+void print_maze(maze_t *maze);
+
+#endif /* !GENERATOR_H_ */

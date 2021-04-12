@@ -4,7 +4,8 @@
 ** File description:
 ** error handling of generator part
 */
-#include "genetator.h"
+
+#include "generator.h"
 
 int input_error(char **av)
 {

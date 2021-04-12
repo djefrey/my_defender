@@ -4,7 +4,8 @@
 ** File description:
 ** generator main file
 */
-#include "genetator.h"
+
+#include "generator.h"
 
 void fill_empty_line(char *line, char character, int size)
 {
@@ -15,19 +16,13 @@ void fill_empty_line(char *line, char character, int size)
 
 int create_maze(maze_t *info)
 {
-    int count = 0;
-
-    if (!(info->maze = malloc(sizeof(char*) * (info->height + 1))))
+    if (!(info->maze = malloc(sizeof(char*) * (info->height))))
         return (1);
-    for (count = 0; count < info->height; count++) {
-        info->maze[count] = malloc(sizeof(char) * (info->width + 1));
-        if (!info->maze[count])
-            return (1);
-    }
-    info->maze[count] = NULL;
     for (int i = 0; i < info->height; i++) {
+        info->maze[i] = malloc(sizeof(char) * (info->width));
+        if (!info->maze[i])
+            return (1);
         fill_empty_line(info->maze[i], '*', info->width);
-        info->maze[info->width] = '\0';
     }
     return (0);
 }
@@ -38,8 +33,9 @@ int init_grid(maze_t *info)
         return (1);
     for (int y = 0; y < info->height; y++) {
         if (y % 2 == 0) {
-            for (int x = 0; x < info->width; x++)
+            for (int x = 0; x < info->width; x++) {
                 info->maze[y][x] = (x % 2 == 0) ? '*' : 'X';
+            }
         } else
             fill_empty_line(info->maze[y], 'X', info->width);
     }
@@ -56,6 +52,6 @@ int generator(int ac, char **av)
     info->height = atoi (av[2]);
     if (init_grid(info))
         return (84);
-    my_putarray(info->maze);
+    print_maze(info);
     return (0);
 }
