@@ -5,3 +5,5 @@ solver/solver
 
 solver/maze
 solver/solved_maze
+
+*.a
