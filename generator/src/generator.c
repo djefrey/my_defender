@@ -66,7 +66,6 @@ void deplacinator(int curr_y, int curr_x, maze_t *info)
     }
 }
 
-
 int generator(int ac, char **av)
 {
     maze_t *info = NULL;
