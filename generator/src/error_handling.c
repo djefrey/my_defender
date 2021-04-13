@@ -7,6 +7,14 @@
 
 #include "generator.h"
 
+void free_everything(maze_t *info)
+{
+    for (int i = 0; i < info->height; i++)
+        free(info->maze[i]);
+    free(info->maze);
+    free(info);
+}
+
 int input_error(char **av)
 {
     int temp_a = 0;

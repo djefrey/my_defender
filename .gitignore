@@ -1,5 +1,6 @@
 **/*.o
 generator/generator
+generator/solver
 solver/solver
 **/vgcore*
 
