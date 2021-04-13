@@ -26,6 +26,7 @@ int create_maze(maze_t *info);
 int init_grid(maze_t *info);
 int generator(int ac, char **av);
 int error(int ac, char **av);
+void messed_up_maze(maze_t *info);
 
 #define NORTH 0
 #define SOUTH 1

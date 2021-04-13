@@ -35,19 +35,6 @@ void patch_maze(maze_t *info)
     }
 }
 
-void shuffle(int *directions)
-{
-    int temp = 0;
-    int random = 0;
-
-    for (int i = 0; i < 4; i++) {
-        random = rand() % 4;
-        temp = directions[i];
-        directions[i] = directions[random];
-        directions[random] = temp;
-    }
-}
-
 int is_next_case_correct(int pos_x, int pos_y, maze_t *info)
 {
     if (pos_x < 0 || pos_y < 0)
@@ -79,6 +66,7 @@ void deplacinator(int curr_y, int curr_x, maze_t *info)
     }
 }
 
+
 int generator(int ac, char **av)
 {
     maze_t *info = NULL;
@@ -92,8 +80,9 @@ int generator(int ac, char **av)
         return (84);
     deplacinator(0, 0, info);
     patch_maze(info);
-    //if (ac == 3)
-     //   messed_up_maze(info);
+    if (ac == 3)
+        messed_up_maze(info);
     print_maze(info);
+    free_everything(info);
     return (0);
 }
