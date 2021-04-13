@@ -10,7 +10,8 @@ NAME		=	generator
 MAIN		=	src/main.c
 SRC			=	src/generator.c 		\
 				src/error_handling.c	\
-				src/maze.c
+				src/maze.c				\
+				src/init.c
 
 INC_DIR		=	./include
 LIB_DIR		=	./lib/my
