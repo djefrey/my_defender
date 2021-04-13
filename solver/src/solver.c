@@ -24,6 +24,7 @@ int loop_nodes(maze_t *maze, list_t **nodes)
     list_t *new_nodes = NULL;
     node_t *node = NULL;
 
+    maze->dist = ((node_t*) (*nodes)->data)->dist;
     for (list_t *list = *nodes; list; list = next) {
         next = list->next;
         node = (node_t*) list->data;

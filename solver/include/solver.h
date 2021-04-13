@@ -23,6 +23,7 @@ typedef struct maze_s {
     int width;
     int height;
     int **maze;
+    int dist;
 } maze_t;
 
 typedef struct node_s {
