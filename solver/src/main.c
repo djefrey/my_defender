@@ -21,7 +21,7 @@ int main(int ac, char **av)
         solved_maze_set_path(&maze);
         solved_maze_print(&maze);
     } else
-        printf("no solution found\n");
+        printf("no solution found");
     for (int i = 0; i < maze.height; i++)
         free(maze.maze[i]);
     free(maze.maze);
