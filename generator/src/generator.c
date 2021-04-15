@@ -45,13 +45,15 @@ int is_next_case_correct(int pos_x, int pos_y, maze_t *info)
     return (1);
 }
 
-void deplacinator(int curr_y, int curr_x, maze_t *info)
+void deplacinator(int curr_y, int curr_x, maze_t *info, int test)
 {
     int directions[] = {NORTH, SOUTH, EST, WEST};
     int shift[4][2] = {{-2, 0}, {2, 0}, {0, 2}, {0, -2}};
     int next_x = 0;
     int next_y = 0;
 
+    if (test > 50000)
+        return;
     shuffle(directions);
     for (int i = 0; i < 4; i++) {
         next_y = curr_y + shift[directions[i]][0];
@@ -60,7 +62,7 @@ void deplacinator(int curr_y, int curr_x, maze_t *info)
             info->maze[curr_y][curr_x] = 'v';
             info->maze[next_y][next_x] = 'v';
             info->maze[(curr_y + next_y) / 2][(curr_x + next_x) / 2] = 'v';
-            deplacinator(next_y, next_x, info);
+            deplacinator(next_y, next_x, info, test + 1);
         }
     }
 }
@@ -76,7 +78,7 @@ int generator(int ac, char **av)
     info->height = atoi (av[2]);
     if (init_grid(info))
         return (84);
-    deplacinator(0, 0, info);
+    deplacinator(0, 0, info, 0);
     patch_maze(info);
     if (ac == 3)
         messed_up_maze(info);
