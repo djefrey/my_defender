@@ -16,21 +16,20 @@ int blocked_hole (maze_t *info)
     return (0);
 }
 
-void patch_maze(maze_t *info)
+void patch_maze(maze_t *inf)
 {
     int coin = rand() % 2;
 
-    if (info->maze[info->height - 1][info->width - 1] == 'X') {
-        info->maze[info->height - 1][info->width - 1] = '*';
-        if (blocked_hole(info)) {
-            info->maze[info->height - 2][info->width -1] = coin == 1 ? '*' : 'X';
-            info->maze[info->height - 1][info->width - 2] = coin == 1 ? 'X' : '*';
+    if (inf->maze[inf->height - 1][inf->width - 1] == 'X') {
+        inf->maze[inf->height - 1][inf->width - 1] = '*';
+        if (blocked_hole(inf)) {
+            inf->maze[inf->height - 2][inf->width - 1] = coin == 1 ? '*' : 'X';
+            inf->maze[inf->height - 1][inf->width - 2] = coin == 1 ? 'X' : '*';
         }
-
     }
-    for (int i = 0; i < info->height; i++) {
-        for (int j = 0; j < info->width; j++) {
-            info->maze[i][j] = info->maze[i][j] == 'v' ? '*' : info->maze[i][j];
+    for (int i = 0; i < inf->height; i++) {
+        for (int j = 0; j < inf->width; j++) {
+            inf->maze[i][j] = inf->maze[i][j] == 'v' ? '*' : inf->maze[i][j];
         }
     }
 }
