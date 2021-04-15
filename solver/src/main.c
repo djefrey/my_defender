@@ -11,7 +11,7 @@
 
 int main(int ac, char **av)
 {
-    maze_t maze = {0, 0, NULL};
+    maze_t maze = {0, 0, NULL, 0};
     int ret = 0;
 
     if (ac != 2 || create_maze_from_file(&maze, av[1]))
