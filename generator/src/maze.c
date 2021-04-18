@@ -7,7 +7,7 @@
 
 #include "generator.h"
 
-void shuffle(int *directions)
+void shuffle(int directions[])
 {
     int temp = 0;
     int random = 0;

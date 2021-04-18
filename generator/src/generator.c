@@ -5,6 +5,7 @@
 ** generator main file
 */
 
+#include <time.h>
 #include "generator.h"
 
 int blocked_hole (maze_t *info)
@@ -45,14 +46,14 @@ int is_next_case_correct(int pos_x, int pos_y, maze_t *info)
     return (1);
 }
 
-void deplacinator(int curr_y, int curr_x, maze_t *info, int test)
+void deplacinator(int curr_y, int curr_x, maze_t *info, int deep)
 {
     int directions[] = {NORTH, SOUTH, EST, WEST};
     int shift[4][2] = {{-2, 0}, {2, 0}, {0, 2}, {0, -2}};
     int next_x = 0;
     int next_y = 0;
 
-    if (test > 50000)
+    if (deep > 65000)
         return;
     shuffle(directions);
     for (int i = 0; i < 4; i++) {
@@ -62,7 +63,7 @@ void deplacinator(int curr_y, int curr_x, maze_t *info, int test)
             info->maze[curr_y][curr_x] = 'v';
             info->maze[next_y][next_x] = 'v';
             info->maze[(curr_y + next_y) / 2][(curr_x + next_x) / 2] = 'v';
-            deplacinator(next_y, next_x, info, test + 1);
+            deplacinator(next_y, next_x, info, deep + 1);
         }
     }
 }
